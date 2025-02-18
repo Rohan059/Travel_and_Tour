@@ -10,32 +10,38 @@ window.onscroll = () =>{
    menu.classList.remove('fa-times');
    navbar.classList.remove('active');
 };
-
+// Home slider
 var swiper = new Swiper(".home-slider", {
-   loop:true,
-   navigation: {
-     nextEl: ".swiper-button-next",
-     prevEl: ".swiper-button-prev",
+   loop: true,
+   autoplay: {
+      delay: 5000, // 5 seconds
+      disableOnInteraction: false, // Autoplay continues even after interaction
    },
 });
 
+// Reviews slider
 var swiper = new Swiper(".reviews-slider", {
-   grabCursor:true,
-   loop:true,
-   autoHeight:true,
+   loop: true,
+   grabCursor: true,
+   autoHeight: true,
    spaceBetween: 20,
+   autoplay: {
+      delay: 5000, // 5 seconds
+      disableOnInteraction: false, // Autoplay continues even after interaction
+   },
    breakpoints: {
       0: {
-        slidesPerView: 1,
+         slidesPerView: 1,
       },
       700: {
-        slidesPerView: 2,
+         slidesPerView: 2,
       },
       1000: {
-        slidesPerView: 3,
+         slidesPerView: 3,
       },
    },
 });
+
 
 let loadMoreBtn = document.querySelector('.packages .load-more .btn');
 let currentItem = 3;

@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    $is_logged_in = false;
+} else {
+    $is_logged_in = true;
+    $user_name = $_SESSION['user_name'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +32,21 @@
 
 <section class="header">
 
-   <a href="home.php" class="logo">travel.</a>
+   <a href="home.php" class="logo">Goslownepal.</a>
 
    <nav class="navbar">
       <a href="home.php">home</a>
       <a href="about.php">about</a>
       <a href="package.php">package</a>
       <a href="book.php">book</a>
+      <?php if ($is_logged_in): ?>
+       <!-- Show logout button first, then user full name -->
+       <a href="logout.php" class="logout-btn">Logout</a>
+       <span>Welcome, <?php echo htmlspecialchars($user_name); ?></span>
+   <?php else: ?>
+       <!-- Show login button if not logged in -->
+       <a href="login.php" class="login-icon"><i class="fas fa-user"></i> login</a>
+   <?php endif; ?>
    </nav>
 
    <div id="menu-btn" class="fas fa-bars"></div>
@@ -49,16 +67,43 @@
 
    <div class="box-container">
 
-      <div class="box">
-         <div class="image">
-            <img src="images/img-1.jpg" alt="">
-         </div>
-         <div class="content">
-            <h3>adventure & tour</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, perspiciatis!</p>
-            <a href="book.php" class="btn">book now</a>
-         </div>
-      </div>
+   <?php
+// Database connection
+include('connection.php');
+
+// Fetch packages from database
+$sql = "SELECT * FROM packages";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Correct image path for localhost
+        $image_path = "http://localhost/summerproject/Travel-website-Design/images/" . $row["image"];
+        
+        
+
+        echo '<div class="box">
+                <div class="image">
+                    <img src="' . $image_path . '" alt="' . $row["title"] . '" onerror="this.src=\'http://localhost/summerproject/Travel-website-Design/images/default.jpg\';">
+                </div>
+                <div class="content">
+                    <h3>' . $row["title"] . '</h3>
+                    <p>' . $row["description"] . '</p>
+                    <p><strong>Price:</strong> $' . $row["price"] . '</p>
+                    <a href="login.php?redirect=book.php" class="btn">Book Now</a>
+                </div>
+              </div>';
+    }
+} else {
+    echo "No packages found!";
+}
+
+$conn->close();
+?>
+
+
+
+
 
       <div class="box">
          <div class="image">
@@ -218,20 +263,20 @@
          <a href="book.php"> <i class="fas fa-angle-right"></i> book</a>
       </div>
 
-      <div class="box">
+      <!-- <div class="box">
          <h3>extra links</h3>
          <a href="#"> <i class="fas fa-angle-right"></i> ask questions</a>
          <a href="#"> <i class="fas fa-angle-right"></i> about us</a>
          <a href="#"> <i class="fas fa-angle-right"></i> privacy policy</a>
          <a href="#"> <i class="fas fa-angle-right"></i> terms of use</a>
-      </div>
+      </div> -->
 
       <div class="box">
          <h3>contact info</h3>
-         <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
-         <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
-         <a href="#"> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </a>
-         <a href="#"> <i class="fas fa-map"></i> mumbai, india - 400104 </a>
+         <a href="#"> <i class="fas fa-phone"></i> 9800000000 </a>
+         <a href="#"> <i class="fas fa-phone"></i> 0140000 </a>
+         <a href="#"> <i class="fas fa-envelope"></i> goslownepal@gmail.com </a>
+         <a href="#"> <i class="fas fa-map"></i> Shorakhuttey, Nepal </a>
       </div>
 
       <div class="box">
@@ -244,10 +289,9 @@
 
    </div>
 
-   <div class="credit"> created by <span>mr. web designer</span> | all rights reserved! </div>
+   <!-- <div class="credit"> created by <span>mr. web designer</span> | all rights reserved! </div> -->
 
 </section>
-
 <!-- footer section ends -->
 
 
