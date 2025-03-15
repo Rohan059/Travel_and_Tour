@@ -1,6 +1,6 @@
 <?php
 
-   $connection = mysqli_connect('localhost','root','','book_db');
+   $connection = mysqli_connect('localhost','root','','goslownepal');
 
    if(isset($_POST['send'])){
       $name = $_POST['name'];
@@ -12,7 +12,7 @@
       $arrivals = $_POST['arrivals'];
       $leaving = $_POST['leaving'];
 
-      $request = " insert into book_form(name, email, phone, address, location, guests, arrivals, leaving) values('$name','$email','$phone','$address','$location','$guests','$arrivals','$leaving') ";
+      $request = " insert into bookings(name, email, phone, address, location, guests, arrivals, leaving) values('$name','$email','$phone','$address','$location','$guests','$arrivals','$leaving') ";
       mysqli_query($connection, $request);
 
       header('location:book.php'); 

@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-echo "<h1>यो बुकिङ पृष्ठ हो</h1>";
+
 
 
 ?>

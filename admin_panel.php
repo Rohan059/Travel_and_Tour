@@ -5,13 +5,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-$admin_name = $_SESSION['admin_name'];
-
-// Database connection
 include('connection.php');
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -21,15 +15,16 @@ include('connection.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="css/admin_style.css">
+    
+   <link rel="stylesheet" href="css/admin_css.css">
 </head>
 <body>
 
-<!-- Admin Header Section -->
+<!-- Admin Header -->
 <header>
     <div class="header-content">
-        <h1>Welcome, <?php echo $admin_name; ?></h1>
-        <a href="logout.php" class="logout-btn">Logout</a>
+        <h1>Welcome, <?php echo $_SESSION['admin_name']; ?></h1>
+        <a href="admin_logout.php" class="logout-btn">Logout</a>
     </div>
 </header>
 
@@ -37,37 +32,23 @@ include('connection.php');
 <aside class="sidebar">
     <nav>
         <ul>
+            <li><a href="add_package.php" class="btn">Add Package</a></li>
             <li><a href="manage_packages.php" class="btn">Manage Packages</a></li>
-            <li><a href="manage_bookings.php" class="btn">Manage Bookings</a></li>
-            <li><a href="manage_reviews.php" class="btn">Client Reviews</a></li>
-            <li><a href="admin_settings.php" class="btn">Settings</a></li>
+            <li><a href="manage_bookings.php" class="btn">View Bookings</a></li>
+            <li><a href="manage_reviews.php" class="btn">View Reviews</a></li>
         </ul>
     </nav>
 </aside>
 
-<!-- Admin Dashboard Main Content -->
+<!-- Main Content -->
 <main class="main-content">
-    <h2>Dashboard</h2>
-    <div class="cards-container">
-        <div class="card">
-            <h3>Total Packages</h3>
-            <p><?php echo $total_packages; ?></p>
-        </div>
-        <div class="card">
-            <h3>Total Bookings</h3>
-            <p><?php echo $total_bookings; ?></p>
-        </div>
-        <div class="card">
-            <h3>Client Reviews</h3>
-            <p><?php echo $total_reviews; ?></p>
-        </div>
-    </div>
+    <h2>Admin Dashboard</h2>
+    <p>Welcome to the admin panel. Use the sidebar to manage packages, bookings, and reviews.</p>
 </main>
 
 </body>
 </html>
 
 <?php
-// Close database connection
 $conn->close();
 ?>

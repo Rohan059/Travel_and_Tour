@@ -1,0 +1,126 @@
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body & Font Style */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header */
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .logout-btn {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        position: absolute; 
+    right: 20px;
+    top:2%;
+    
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .logout-btn:hover {
+        background-color: #423997;
+    }
+
+    /* Form Container */
+    .form-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .form-wrapper {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        max-width: 100%;
+    }
+
+    .form-wrapper h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 22px;
+        color: #333;
+    }
+
+    /* Form Group */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    /* Button */
+    button.btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+    }
+
+    button.btn:hover {
+        background-color: #45a049;
+    }
+
+    /* Message Styles */
+    .message {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .message.success {
+        background-color: #d4edda;
+        color: #155724;
+    }

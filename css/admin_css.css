@@ -1,4 +1,4 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -34,18 +34,26 @@ header .header-content h1 {
     color: white; /* Ensure text is visible */
 }
 
+/* Logout Button */
 .logout-btn {
     background-color: #f44336;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 15px; /* Reduced padding to make it smaller */
     text-decoration: none;
     border-radius: 5px;
     font-size: 14px;
+    font-weight: bold;
+    position: absolute; /* Align it properly */
+    right: 20px; /* Push to the right */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    cursor: pointer;
 }
 
 .logout-btn:hover {
     background-color: #d32f2f;
 }
+
 
 /* Sidebar */
 .sidebar {

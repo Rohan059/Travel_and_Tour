@@ -1,23 +1,19 @@
 <?php
 session_start();
-include('db.php');
-
 if (!isset($_SESSION['admin_id'])) {
     header("Location: admin_login.php");
     exit();
 }
 
-if (isset($_GET['id'])) {
-    $package_id = $_GET['id'];
+include('connection.php');
 
-    // SQL query to delete the package
-    $sql = "DELETE FROM packages WHERE package_id = '$package_id'";
+$id = $_GET['id'];
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Package deleted successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+$sql = "DELETE FROM packages WHERE id='$id'";
+if ($conn->query($sql)) {
+    header("Location: manage_packages.php");
+} else {
+    echo "<p>Error: " . $conn->error . "</p>";
 }
 
 $conn->close();
